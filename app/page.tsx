@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import { getProducts, saveProducts } from "./utils/storage";
 import ProductForm from "./components/ProductForm";
 import ProductList from "./components/ProductList";
@@ -33,12 +34,15 @@ export default function Home() {
     setProducts(updated);
     saveProducts(updated);
     setDialogOpen(false);
+    toast.success("Product added successfully! ✨");
   };
 
   const deleteProduct = (id: number) => {
+    const productName = products.find(p => p.id === id)?.name || "Product";
     const updated = products.filter((p) => p.id !== id);
     setProducts(updated);
     saveProducts(updated);
+    toast.success(`${productName} deleted successfully 🗑️`);
   };
 
   const updateProduct = (updatedProduct: any) => {
@@ -49,6 +53,7 @@ export default function Home() {
     saveProducts(updated);
     setEditProduct(null);
     setDialogOpen(false);
+    toast.success("Product updated successfully! ✅");
   };
 
   const filteredProducts = products.filter((p) =>

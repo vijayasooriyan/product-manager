@@ -44,10 +44,8 @@ export default function ProductForm({ addProduct, editProduct, updateProduct }: 
 
     if (editProduct) {
       updateProduct({ ...form, id: editProduct.id });
-      toast.success("Product updated successfully");
     } else {
       addProduct({ ...form, id: Date.now() });
-      toast.success("Product added successfully");
     }
 
     setForm({ id: 0, name: "", price: "", description: "" });
