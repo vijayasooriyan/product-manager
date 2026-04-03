@@ -15,12 +15,16 @@ interface ProductListProps {
 
 export default function ProductList({ products, deleteProduct, setEditProduct }: ProductListProps) {
   if (products.length === 0) {
-    return <p className="text-center text-gray-500">No products found. Please add some!</p>;
+    return (
+      <p className="text-center text-gray-500">
+        No products found 🚫
+      </p>
+    );
   }
 
   return (
-    <div className="grid md:grid-cols-3 gap-4">
-      {products.map((product: Product) => (
+    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+      {products.map((product) => (
         <ProductCard
           key={product.id}
           product={product}
