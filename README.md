@@ -203,4 +203,4 @@ For questions or issues, feel free to reach out or check the documentation above
 
 ---
 
-**Happy Product Managing!** 🎉
+**Build by Vijaysooriyan Kamarajah**
