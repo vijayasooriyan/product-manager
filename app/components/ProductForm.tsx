@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, FormEvent } from "react";
+import toast from "react-hot-toast";
 
 interface Product {
   id: number;
@@ -29,13 +30,22 @@ export default function ProductForm({ addProduct, editProduct, updateProduct }: 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (!form.name.trim()){
+      toast.error("Product name is required");
+      return;
+    }
+    if(!form.price || isNaN(Number(form.price))){
+      toast.error("Valid price is required");
+      return;
+    }
+
     if (editProduct) {
       updateProduct({ ...form, id: editProduct.id });
     } else {
       addProduct({ ...form, id: Date.now() });
     }
 
-    setForm({ name: "", price: "", description: "" });
+    setForm({ id: 0, name: "", price: "", description: "" });
   };
 
   return (

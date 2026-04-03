@@ -13,7 +13,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, deleteProduct, setEditProduct }: ProductCardProps) {
   return (
-    <div className="border p-4 rounded shadow">
+    <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow hover:shadow-lg transition">
       <h2 className="font-bold">{product.name}</h2>
       <p>${product.price}</p>
       <p className="text-sm">{product.description}</p>
