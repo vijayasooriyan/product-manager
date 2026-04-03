@@ -1,6 +1,9 @@
 "use client";
 import { useState, useEffect, FormEvent } from "react";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card } from "@/components/ui/card";
 
 interface Product {
   id: number;
@@ -41,39 +44,50 @@ export default function ProductForm({ addProduct, editProduct, updateProduct }: 
 
     if (editProduct) {
       updateProduct({ ...form, id: editProduct.id });
+      toast.success("Product updated successfully");
     } else {
       addProduct({ ...form, id: Date.now() });
+      toast.success("Product added successfully");
     }
 
     setForm({ id: 0, name: "", price: "", description: "" });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 mb-6">
-      <input
-        className="border p-2 w-full"
-        placeholder="Product Name"
-        value={form.name}
-        onChange={(e) => setForm({ ...form, name: e.target.value })}
-      />
-      <input
-        className="border p-2 w-full"
-        placeholder="Price"
-        value={form.price}
-        onChange={(e) => setForm({ ...form, price: e.target.value })}
-      />
-      <textarea
-        className="border p-2 w-full"
-        placeholder="Description"
-        value={form.description}
-        onChange={(e) =>
-          setForm({ ...form, description: e.target.value })
-        }
-      />
+    <Card className="p-6 mb-6">
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <Input
+            placeholder="Product Name"
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
+          />
+        </div>
+        <div>
+          <Input
+            type="number"
+            placeholder="Price"
+            value={form.price}
+            onChange={(e) => setForm({ ...form, price: e.target.value })}
+            step="0.01"
+          />
+        </div>
+        <div>
+          <textarea
+            className="border border-input rounded-md p-2 w-full focus:outline-none focus:ring-2 focus:ring-ring"
+            placeholder="Description"
+            value={form.description}
+            onChange={(e) =>
+              setForm({ ...form, description: e.target.value })
+            }
+            rows={4}
+          />
+        </div>
 
-      <button className="bg-blue-500 text-white px-4 py-2">
-        {editProduct ? "Update" : "Add"} Product
-      </button>
-    </form>
+        <Button type="submit" className="w-full">
+          {editProduct ? "Update" : "Add"} Product
+        </Button>
+      </form>
+    </Card>
   );
 }

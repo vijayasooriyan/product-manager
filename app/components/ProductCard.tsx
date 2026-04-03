@@ -1,3 +1,6 @@
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+
 interface Product {
   id: number;
   name: string;
@@ -13,25 +16,27 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, deleteProduct, setEditProduct }: ProductCardProps) {
   return (
-    <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow hover:shadow-lg transition">
-      <h2 className="font-bold">{product.name}</h2>
-      <p>${product.price}</p>
-      <p className="text-sm">{product.description}</p>
+    <Card className="p-4 hover:shadow-lg transition">
+      <h2 className="font-bold text-lg mb-2">{product.name}</h2>
+      <p className="text-xl font-semibold text-green-600 mb-2">${product.price}</p>
+      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{product.description}</p>
 
-      <div className="flex gap-2 mt-3">
-        <button
+      <div className="flex gap-2 mt-4">
+        <Button
+          variant="outline"
           onClick={() => setEditProduct(product)}
-          className="bg-yellow-400 px-2 py-1"
+          className="flex-1"
         >
           Edit
-        </button>
-        <button
+        </Button>
+        <Button
+          variant="destructive"
           onClick={() => deleteProduct(product.id)}
-          className="bg-red-500 text-white px-2 py-1"
+          className="flex-1"
         >
           Delete
-        </button>
+        </Button>
       </div>
-    </div>
+    </Card>
   );
 }
