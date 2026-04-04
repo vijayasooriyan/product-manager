@@ -2,6 +2,8 @@
 
 A modern, full-featured **Product Management Dashboard** built with cutting-edge web technologies. Manage your products efficiently with a beautiful, responsive UI and smooth user experience.
 
+check out here : https://product-manager-beige.vercel.app/
+
 ## ✨ Features
 
 - ✅ **Create Products** - Add new products with name, price, and description
@@ -202,5 +204,6 @@ MIT License - feel free to use this project for any purpose.
 For questions or issues, feel free to reach out or check the documentation above.
 
 ---
+check out here : https://product-manager-beige.vercel.app/
 
 **Build by Vijaysooriyan Kamarajah**
